@@ -20,7 +20,8 @@ table
         tr 
             td
                 img class="cover-image" src="#{record.cover}"
-            td #{record.title}
+            td 
+                a href="/book/#{record.id}" #{record.title}
             td 
                 a href="/author/#{record.author.id}" #{record.author.name}
             td #{record.isbn}

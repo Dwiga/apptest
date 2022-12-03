@@ -1,0 +1,39 @@
+h1 Book data 
+
+img src="#{@book.cover}"
+
+table 
+    tr 
+        td Title: 
+        td #{@book.title}
+    tr 
+        td ISBN: 
+        td #{@book.isbn}
+    tr 
+        td Original Title: 
+        td #{@book.original_title}
+    tr 
+        td Year 
+        td #{@book.year}
+    tr 
+        td Author: 
+        td #{@book.author.name}
+    tr 
+        td Category 
+        td #{@book.category}
+    tr 
+        td Plot 
+        td #{@book.plot.first(50)}
+    tr 
+        td Pages: 
+        td #{@book.pages}
+    tr 
+        td Language 
+        td #{@book.language}
+    tr 
+        td Release date: 
+        td #{@book.release_date}
+
+h1 Gallery
+- @book.images.each do |image|
+    img src="#{image.url}"
