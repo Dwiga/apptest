@@ -21,7 +21,8 @@ table
             td
                 img class="cover-image" src="#{record.cover}"
             td #{record.title}
-            td #{record.author.name}
+            td 
+                a href="/author/#{record.author.id}" #{record.author.name}
             td #{record.isbn}
             td #{record.year}
             td #{record.category}
