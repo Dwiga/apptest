@@ -1,1 +1,31 @@
-h1 mark up example
+h1 Books data
+
+div
+    form
+        div class="name_wrapper"
+            input class="author" id="author" type="text" placeholder="Input name of author"
+            input class="book" id="book" type="text" placeholder="Input number of page"
+
+table
+    tr 
+        th cover
+        th Book title 
+        th Author name 
+        th ISBN 
+        th Year 
+        th Category
+        th Average rating 
+        th Pages
+    - @records.each do |record|
+        tr 
+            td
+                img class="cover-image" src="#{record.cover}"
+            td #{record.title}
+            td #{record.author.name}
+            td #{record.isbn}
+            td #{record.year}
+            td #{record.category}
+            td #{record.average_rating}
+            td #{record.pages}
+
+== pagy_nav(@pagy)
