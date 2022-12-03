@@ -4,11 +4,14 @@ div
     form
         div class="name_wrapper"
             input class="author" id="author" type="text" placeholder="Input name of author"
-            input class="book" id="book" type="text" placeholder="Input number of page"
+            form method="get" action="/"
+                input class="book" id="book" type="number" name="minimum" placeholder="Input minimum number of page"
+                input class="book" id="book" type="number" name="maximum" placeholder="Input maximum number of page"
+                input type="submit"
 
 table
     tr 
-        th cover
+        th Cover
         th Book title 
         th Author name 
         th ISBN 
