@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :book_wikipedia
     resources :good_reads
     resources :gutenbergs
+    resources :another_books do
+      resources :similar_books
+    end
+    resources :similar_books
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

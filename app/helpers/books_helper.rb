@@ -29,4 +29,10 @@ module BooksHelper
             return Book.includes(:author)
         end
     end
+
+    def another_book_finder(similar_book_id)
+        @similar_book = SimilarBook.find(similar_book_id)
+        another_book = @similar_book.another_book
+        return another_book.name
+    end
 end

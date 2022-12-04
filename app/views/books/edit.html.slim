@@ -125,4 +125,11 @@ br
                         .form-group 
                             = f.label :num
                             = f.text_field :num, type: "number", class: "form-control"
-                        = f.submit                
+                        = f.submit
+            
+            br
+            h5.card-title Book's similar books
+            ul.list-group
+                - @book.similar_books.each do |similar|
+                    li.list-group-item.d-flex.justify-content-between.align-item-center
+                        p #{another_book_finder(similar.id)}
