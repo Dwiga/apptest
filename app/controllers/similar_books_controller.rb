@@ -1,0 +1,2 @@
+class SimilarBooksController < ApplicationController
+end

@@ -1,0 +1,142 @@
+br
+.container-fluid
+    .card 
+        .card-body
+            h5.card-title Update book's data 
+            = form_with(model: @book) do |f|
+                .form-group
+                    = f.label :original_title
+                    = f.text_field :original_title, type: "text", class: "form-control", placeholder: "Original title"
+                .form-group 
+                    = f.label :title
+                    = f.text_field :title, type: "text", class: "form-control", placeholder: "Book's title"
+                .form-group 
+                    = f.label :content_name
+                    = f.text_field :content_name, type: "text", class: "form-control", placeholder: "Book's content name"
+                .form-group 
+                    = f.label :isbn
+                    = f.text_field :isbn, type: "text", class: "form-control", placeholder: "Book's ISBN number"
+                .form-group 
+                    = f.label :year
+                    = f.text_field :year, type: "text", class: "form-control", placeholder: "Book's year"
+                .form-group 
+                    = f.label :language_code
+                    = f.text_field :language_code, type: "text", class: "form-control", placeholder: "Book's language code"
+                .form-group
+                    = f.label :category
+                    = f.select(:category, ["Sound", "Text"], selected: @book.category, class: "form-control")
+                .form-group 
+                    = f.label :plot
+                    = f.text_area :plot, type: "text", class: "form-control", placeholder: "Book's plot story"
+                .form-group 
+                    = f.label :copyright
+                    = f.text_field :copyright, type: "text", class: "form-control", placeholder: "Book's copyright"
+                .form-group 
+                    = f.label :average_rating
+                    = f.text_field :average_rating, type: "text", class: "form-control", placeholder: "Book's average rating"
+                .form-group 
+                    = f.label :rating_count
+                    = f.text_field :rating_count, type: "number", class: "form-control", placeholder: "Book's rating count"
+                .form-group 
+                    = f.label :description
+                    = f.text_area :description, type: "text", class: "form-control", placeholder: "Book's description"
+                .form-group 
+                    = f.label :loc_class
+                    = f.text_field :loc_class, type: "text", class: "form-control", placeholder: "Book's loc class"
+                .form-group 
+                    = f.label :pages
+                    = f.text_field :pages, type: "number", class: "form-control", placeholder: "Book's page number"
+                .form-group 
+                    = f.label :language
+                    = f.text_field :language, type: "text", class: "form-control", placeholder: "Book's language"
+                .form-group 
+                    = f.label :isbn13
+                    = f.text_field :isbn13, type: "text", class: "form-control", placeholder: "Book's ISBN13 number"
+                .form-group
+                    = f.label :release_date
+                    = f.text_field :release_date, type: "date", class: "form-control", value: @book.release_date.to_date
+                .form-group 
+                    = f.label :cover
+                    = f.text_field :cover, type: "text", class: "form-control", placeholder: "Book's cover"
+                .form-group 
+                    = f.label :summary
+                    = f.text_area :summary, type: "text", class: "form-control", placeholder: "Book's summary"
+                .form-group
+                    = f.label :content_cleaned
+                    = f.select(:content_cleaned, [true, false], selected: @book.content_cleaned, class: "form-control")
+                .form-group
+                    = f.label :content_available
+                    = f.select(:content_available, [true, false], selected: @book.content_available, class: "form-control")
+                .form-group 
+                    = f.label :n_authors
+                    = f.text_field :n_authors, type: "number", class: "form-control", placeholder: "Book's n authors"
+                .form-group 
+                    = f.submit
+            br
+            h5.card-title Book's images
+            ul.list-group
+                - @book.images.each do |image|
+                    li.list-group-item.d-flex.justify-content-between.align-item-center
+                        img.cover-image src="#{image.url}"
+                        div 
+                            a href="#{image.url}" #{image.url}
+                        button.badge.badge-danger.badge-pill Delete
+
+            br
+            h5.card-title Update book's wiki data
+            .card 
+                .card-body 
+                    = form_with model: [@book, @book.book_wikipedium] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :found
+                            = f.select(:found, [["Found", true], ["Not Found", false]], selected: @book.book_wikipedium.found)
+                        .form-group 
+                            = f.label :year 
+                            = f.text_field :year, type: "text", class: "form-control"
+                        = f.submit
+
+            br
+            h5.card-title Update book's good read
+            .card 
+                .card-body 
+                    = form_with model: [@book, @book.good_read] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :found
+                            = f.select(:found, [["Found", true], ["Not Found", false]], selected: @book.good_read.found)
+                        .form-group 
+                            = f.label :year 
+                            = f.text_field :year, type: "text", class: "form-control"
+                        = f.submit
+
+            br
+            h5.card-title Update book's gutenberg
+            .card 
+                .card-body 
+                    = form_with model: [@book, @book.gutenberg] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :num
+                            = f.text_field :num, type: "number", class: "form-control"
+                        = f.submit
+            
+            br
+            h5.card-title Book's similar books
+            ul.list-group
+                - @book.similar_books.each do |similar|
+                    li.list-group-item.d-flex.justify-content-between.align-item-center
+                        p #{another_book_finder(similar.id)}
+
+            br
+            h5.card-title Book's class
+            ul.list-group
+                - @book.book_tags.each do |book_tag|
+                    li.list-group-item.d-flex.justify-content-between.align-item-center
+                        p #{tag_finder(book_tag.id)}

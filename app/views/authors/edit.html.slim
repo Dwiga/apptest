@@ -29,11 +29,13 @@ br
             
             br
             h5.card-title Update author's wiki data
-            = form_with model: [@author, @author.wikipedium] do |f|
-                .form-group
-                    = f.label :url
-                    = f.text_field :url, type: "text", class: "form-control"
-                .form-group 
-                    = f.label :found
-                    = f.select(:found, [["Found", true], ["Not Found", false]], selected: @author.wikipedium.found)
-                = f.submit
+            .card 
+                .card-body
+                    = form_with model: [@author, @author.wikipedium] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :found
+                            = f.select(:found, [["Found", true], ["Not Found", false]], selected: @author.wikipedium.found)
+                        = f.submit

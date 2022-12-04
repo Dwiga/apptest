@@ -1,0 +1,2 @@
+class AnotherBooksController < ApplicationController
+end

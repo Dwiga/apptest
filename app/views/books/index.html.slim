@@ -33,7 +33,7 @@ table
             td
                 img class="cover-image" src="#{record.cover}"
             td 
-                a href="/book/#{record.id}" #{record.title}
+                a href="/books/#{record.id}" #{record.title}
             td 
                 = link_to record.author.name, author_path(record.author.id)
             td #{record.isbn}
