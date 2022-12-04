@@ -1,0 +1,39 @@
+br
+.container-fluid 
+    .card
+        .card-body
+            h5.card-title Update author's data
+            = form_with(model: @author) do |form|
+                .form-group
+                    = form.label :name
+                    = form.text_field :name, type: "text", class: "form-control", placeholder: "Author's name"
+                .form-group
+                    = form.label :bio
+                    = form.text_area :bio, type: "text", class: "form-control", placeholder: "Author's bio"
+                .form-group
+                    = form.label :gender
+                    = form.select(:gender, [["Male", "m"], ["Female", "f"]], selected: @author.gender, class: "form-control")
+                .form-group
+                    = form.label :n_books
+                    = form.text_field :n_books, type: "text", class: "form-control", placeholder: "N books"
+                .form-group
+                    = form.label :summary
+                    = form.text_area :summary, type: "text", class: "form-control", placeholder: "Summary"
+                .form-group
+                    = form.label :born
+                    = form.text_field :born, type: "date", class: "form-control", value: @author.born.to_date
+                .form-group
+                    = form.label :died
+                    = form.text_field :died, type: "date", class: "form-control", value: @author.died.to_date
+                = form.submit
+            
+            br
+            h5.card-title Update author's wiki data
+            = form_with model: [@author, @author.wikipedium] do |f|
+                .form-group
+                    = f.label :url
+                    = f.text_field :url, type: "text", class: "form-control"
+                .form-group 
+                    = f.label :found
+                    = f.select(:found, [["Found", true], ["Not Found", false]], selected: @author.wikipedium.found)
+                = f.submit
