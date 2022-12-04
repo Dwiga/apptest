@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   root "books#index"
+
   resources :authors do
     resources :wikipedia
+    resources :books
   end
 
-  get "book/:id", :to => "books#view"
+  resources :books
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
