@@ -97,4 +97,20 @@ br
                             = f.label :year 
                             = f.text_field :year, type: "text", class: "form-control"
                         = f.submit
+
+            br
+            h5.card-title Update book's good read
+            .card 
+                .card-body 
+                    = form_with model: [@book, @book.good_read] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :found
+                            = f.select(:found, [["Found", true], ["Not Found", false]], selected: @book.good_read.found)
+                        .form-group 
+                            = f.label :year 
+                            = f.text_field :year, type: "text", class: "form-control"
+                        = f.submit
                 
