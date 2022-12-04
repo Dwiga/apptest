@@ -8,20 +8,18 @@ div
     form
         div class="name_wrapper"
             form method="get" action="/"
-                div.form-group.row
-                    div.col-10
-                        <select id="authors" multiple name="authors[]"> 
-                            - @authors.each do |author|
-                                <option value="#{author.id}">#{author.name}</option>
-                        </select>
+                <select id="authors" multiple name="authors[]"> 
+                    - @authors.each do |author|
+                        <option value="#{author.id}">#{author.name}</option>
+                </select>
                 input type="submit"
         div class="name_wrapper"
             form method="get" action="/"
                 input class="searchBook" id="book" type="number" name="minimum" placeholder="Input minimum number of page"
                 input class="searchBook" id="book" type="number" name="maximum" placeholder="Input maximum number of page"
-                input type="submit"
+                input type="submit" 
 
-table
+table.table
     tr 
         th Cover
         th Book title 
