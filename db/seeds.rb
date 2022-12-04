@@ -28,6 +28,7 @@ authors_data["authors"].each do |author|
         )
     end
 end
+puts "Done."
 
 puts "Seeding books data...."
 puts "A bit longer due to size of the data..."
@@ -133,3 +134,4 @@ books_data["books"].each do |book|
         end
     end
 end
+puts "Done."
