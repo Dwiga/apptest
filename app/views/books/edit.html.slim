@@ -113,4 +113,16 @@ br
                             = f.label :year 
                             = f.text_field :year, type: "text", class: "form-control"
                         = f.submit
-                
+
+            br
+            h5.card-title Update book's gutenberg
+            .card 
+                .card-body 
+                    = form_with model: [@book, @book.gutenberg] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :num
+                            = f.text_field :num, type: "number", class: "form-control"
+                        = f.submit                
