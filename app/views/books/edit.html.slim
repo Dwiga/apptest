@@ -72,4 +72,29 @@ br
                     = f.text_field :n_authors, type: "number", class: "form-control", placeholder: "Book's n authors"
                 .form-group 
                     = f.submit
+            br
+            h5.card-title Book's images
+            ul.list-group
+                - @book.images.each do |image|
+                    li.list-group-item.d-flex.justify-content-between.align-item-center
+                        img.cover-image src="#{image.url}"
+                        div 
+                            a href="#{image.url}" #{image.url}
+                        button.badge.badge-danger.badge-pill Delete
+
+            br
+            h5.card-title Update book's wiki data
+            .card 
+                .card-body 
+                    = form_with model: [@book, @book.book_wikipedium] do |f|
+                        .form-group
+                            = f.label :url
+                            = f.text_field :url, type: "text", class: "form-control"
+                        .form-group 
+                            = f.label :found
+                            = f.select(:found, [["Found", true], ["Not Found", false]], selected: @book.book_wikipedium.found)
+                        .form-group 
+                            = f.label :year 
+                            = f.text_field :year, type: "text", class: "form-control"
+                        = f.submit
                 

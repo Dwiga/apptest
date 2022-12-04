@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :books
   end
 
-  resources :books
+  resources :books do
+    resources :book_wikipedia
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
