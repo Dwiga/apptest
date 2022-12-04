@@ -1,40 +1,77 @@
-h1 Book data 
+br
+    .container-fluid 
+        .card 
+            .card-body
+                .col-3
+                    h1 Book data
+                .col-3
+                    = link_to "Edit", edit_book_path(@book), class: "btn btn-dark"
 
-= link_to "Edit", edit_book_path(@book)
-img src="#{@book.cover}"
+                br
+                img src="#{@book.cover}"
 
-table 
-    tr 
-        td Title: 
-        td #{@book.title}
-    tr 
-        td ISBN: 
-        td #{@book.isbn}
-    tr 
-        td Original Title: 
-        td #{@book.original_title}
-    tr 
-        td Year 
-        td #{@book.year}
-    tr 
-        td Author: 
-        td #{@book.author.name}
-    tr 
-        td Category 
-        td #{@book.category}
-    tr 
-        td Plot 
-        td #{@book.plot.first(50)}
-    tr 
-        td Pages: 
-        td #{@book.pages}
-    tr 
-        td Language 
-        td #{@book.language}
-    tr 
-        td Release date: 
-        td #{@book.release_date}
+                table 
+                    tr 
+                        td Title: 
+                        td #{@book.title}
+                    tr 
+                        td ISBN: 
+                        td #{@book.isbn}
+                    tr 
+                        td Original Title: 
+                        td #{@book.original_title}
+                    tr 
+                        td Year 
+                        td #{@book.year}
+                    tr 
+                        td Author: 
+                        td #{@book.author.name}
+                    tr 
+                        td Category 
+                        td #{@book.category}
+                    tr 
+                        td Plot 
+                        td #{@book.plot.first(50)}
+                    tr 
+                        td Pages: 
+                        td #{@book.pages}
+                    tr 
+                        td Language 
+                        td #{@book.language}
+                    tr 
+                        td Release date: 
+                        td #{@book.release_date}
+                
+                - if @book.book_wikipedium.found == true
+                    div
+                        h1 Wikipedia
+                        p
+                            a href="#{@book.book_wikipedium.url}" #{@book.book_wikipedium.url}
 
-h1 Gallery
-- @book.images.each do |image|
-    img src="#{image.url}"
+                - if @book.good_read.found == true
+                    div 
+                        h1 Goodread
+                        p 
+                            a href="#{@book.good_read.url}" #{@book.good_read.url}
+                            p year: #{@book.good_read.year}
+                
+                div 
+                    h1 Gutenberg 
+                    p 
+                        a href="#{@book.gutenberg.url}" #{@book.gutenberg.url}
+                        p num: #{@book.gutenberg.num}
+
+                div
+                    h1 Class
+                    - @book.book_tags.each do |book_tag|
+                        span.badge.badge-primary style="margin-right: 4px" #{book_tag.tag.name}
+                
+                div
+                    h1 Similars
+                    - @book.similar_books.each do |similar|
+                        span.badge.badge-primary style="margin-right: 4px" #{similar.another_book.name}
+
+                div
+                    h1 Gallery
+                    - @book.images.each do |image|
+                        img.cover-image src="#{image.url}" style="margin-right: 4px;"
