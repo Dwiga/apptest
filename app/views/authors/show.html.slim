@@ -14,13 +14,13 @@ br/
                         td #{@author.name}
                     tr 
                         td style="width: 20px;" Bio :
-                        td #{@author.bio.first(500)}
+                        td #{@author.bio}
                     tr 
                         td style="width: 20px;" Gender :
                         td #{@author.gender}
                     tr 
                         td style="width: 20px;" Summary :
-                        td #{@author.summary.first(500)}
+                        td #{@author.summary}
                     tr 
                         td style="width: 20px;" Born :
                         td #{@author.born.to_s.split[0]}
