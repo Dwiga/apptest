@@ -1,22 +1,30 @@
-h1 Author
-= link_to "Edit", edit_author_path(@author)
-div 
-    table 
-        tr 
-            td Name :
-            td #{@author.name}
-        tr 
-            td Bio :
-            td #{@author.bio.first(200)}
-        tr 
-            td Gender :
-            td #{@author.gender}
-        tr 
-            td Summary :
-            td #{@author.summary}
-        tr 
-            td Born :
-            td #{@author.born.to_s.split[0]}
-        tr 
-            td Died :
-            td #{@author.died.to_s.split[0]}
+br
+.container-fluid
+    .card 
+        .card-body
+            h1 Author
+            = link_to "Edit", edit_author_path(@author)
+            div 
+                table.table
+                    tr 
+                        td style="width: 20px;" Name :
+                        td #{@author.name}
+                    tr 
+                        td style="width: 20px;" Bio :
+                        td #{@author.bio.first(500)}
+                    tr 
+                        td style="width: 20px;" Gender :
+                        td #{@author.gender}
+                    tr 
+                        td style="width: 20px;" Summary :
+                        td #{@author.summary.first(500)}
+                    tr 
+                        td style="width: 20px;" Born :
+                        td #{@author.born.to_s.split[0]}
+                    tr 
+                        td style="width: 20px;" Died :
+                        td #{@author.died.to_s.split[0]}
+            
+            - if @author.wikipedium.found == true
+                h1 Wiki 
+                a href="#{@author.wikipedium.url}" #{@author.wikipedium.url}
