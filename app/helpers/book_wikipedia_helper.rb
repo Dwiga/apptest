@@ -1,0 +1,2 @@
+module BookWikipediaHelper
+end
