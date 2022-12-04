@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "books_helper"
 
 # Specs in this file have access to a helper object that includes
 # the BooksHelper. For example:
@@ -11,5 +12,28 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe BooksHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "given a list of number in string" do
+    it "returns a list of integers" do
+      list = ["1", "2", "3"]
+      expect(list[0]).to be_a(String)
+      result = string_list_to_integer(list)
+      expect(result[0]).to be_a(Integer)
+    end
+  end
+
+  context "given a list of alphabet" do
+    it "returns error" do
+      list = ["a", "b", "c"]
+      expect(list[0]).to be_a(String)
+      expect{ string_list_to_integer(list) }.to raise_error("Required numeric string")
+    end
+  end
+
+  context "given nil" do
+    it "returns empty list" do
+      list = nil
+      result = string_list_to_integer(list)
+      expect(result).to eql([])
+    end
+  end
 end
