@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :another_books do
       resources :similar_books
     end
+    resources :tags do
+      resources :book_tags
+    end
+    resources :book_tags
     resources :similar_books
   end
 

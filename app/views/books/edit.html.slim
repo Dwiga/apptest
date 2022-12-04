@@ -133,3 +133,10 @@ br
                 - @book.similar_books.each do |similar|
                     li.list-group-item.d-flex.justify-content-between.align-item-center
                         p #{another_book_finder(similar.id)}
+
+            br
+            h5.card-title Book's class
+            ul.list-group
+                - @book.book_tags.each do |book_tag|
+                    li.list-group-item.d-flex.justify-content-between.align-item-center
+                        p #{tag_finder(book_tag.id)}

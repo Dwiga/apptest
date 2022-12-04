@@ -35,4 +35,10 @@ module BooksHelper
         another_book = @similar_book.another_book
         return another_book.name
     end
+
+    def tag_finder(book_tag_id)
+        @book_tag = BookTag.find(book_tag_id)
+        tag = @book_tag.tag
+        return tag.name
+    end
 end
