@@ -12,6 +12,8 @@ class BooksController < ApplicationController
 
     def show
         @book = Book.includes(:images, :similar_books, :book_tags, :author).find(params[:id])
+        @similar_books = @book.similar_books.includes(:another_book)
+        @book_tags = @book.book_tags.includes(:tag)
     end
 
     def edit

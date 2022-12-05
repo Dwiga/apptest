@@ -65,12 +65,12 @@ br
 
                 div
                     h1 Class
-                    - @book.book_tags.each do |book_tag|
+                    - @book_tags.each do |book_tag|
                         span.badge.badge-primary style="margin-right: 4px" #{book_tag.tag.name}
                 
                 div
                     h1 Similars
-                    - @book.similar_books.each do |similar|
+                    - @similar_books.each do |similar|
                         span.badge.badge-primary style="margin-right: 4px" #{similar.another_book.name}
 
                 div
