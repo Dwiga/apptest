@@ -18,6 +18,8 @@ class BooksController < ApplicationController
 
     def edit
         @book = Book.includes(:book_wikipedium, :author, :images, :good_read, :similar_books, :gutenberg, :book_tags).find(params[:id])
+        @similar_books = @book.similar_books.includes(:another_book)
+        @book_tags = @book.book_tags.includes(:tag)
     end
 
     def update

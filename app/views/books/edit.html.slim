@@ -133,13 +133,13 @@ script src="https://code.jquery.com/jquery-3.6.1.min.js"
             br
             h5.card-title Book's similar books
             ul.list-group
-                - @book.similar_books.each do |similar|
+                - @similar_books.each do |similar|
                     li.list-group-item.d-flex.justify-content-between.align-item-center
                         p #{similar.another_book.name}
 
             br
             h5.card-title Book's class
             ul.list-group
-                - @book.book_tags.each do |book_tag|
+                - @book_tags.each do |book_tag|
                     li.list-group-item.d-flex.justify-content-between.align-item-center
                         p #{book_tag.tag.name}
