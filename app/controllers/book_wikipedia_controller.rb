@@ -5,7 +5,7 @@ class BookWikipediaController < ApplicationController
         if wikipedium.update(book_wikipedium_data)
             redirect_to @book
         else
-            render :edit, status: :unprocessable_entity
+            render "books/edit", status: :unprocessable_entity
         end
     end
 

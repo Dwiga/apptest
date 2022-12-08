@@ -44,24 +44,25 @@ br
                         td Release date: 
                         td #{@book.release_date}
                 
-                - if @book.book_wikipedium.found == true
+                - if @book.book_wikipedium
                     div
                         h1 Wikipedia
                         p
                             a href="#{@book.book_wikipedium.url}" #{@book.book_wikipedium.url}
 
-                - if @book.good_read.found == true
+                - if @book.good_read
                     div 
                         h1 Goodread
                         p 
                             a href="#{@book.good_read.url}" #{@book.good_read.url}
                             p year: #{@book.good_read.year}
                 
-                div 
-                    h1 Gutenberg 
-                    p 
-                        a href="#{@book.gutenberg.url}" #{@book.gutenberg.url}
-                        p num: #{@book.gutenberg.num}
+                - if @book.gutenberg
+                    div 
+                        h1 Gutenberg 
+                        p 
+                            a href="#{@book.gutenberg.url}" #{@book.gutenberg.url}
+                            p num: #{@book.gutenberg.num}
 
                 div
                     h1 Class

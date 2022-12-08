@@ -11,13 +11,13 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_12_02_091051) do
-  create_table "another_books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "another_books", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "authors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "authors", force: :cascade do |t|
     t.text "bio"
     t.string "name"
     t.string "countries"
@@ -30,35 +30,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_091051) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "book_genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.bigint "genre_id", null: false
+  create_table "book_genres", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "genre_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_genres_on_book_id"
     t.index ["genre_id"], name: "index_book_genres_on_genre_id"
   end
 
-  create_table "book_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.bigint "tag_id", null: false
+  create_table "book_tags", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_tags_on_book_id"
     t.index ["tag_id"], name: "index_book_tags_on_tag_id"
   end
 
-  create_table "book_wikipedia", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "book_wikipedia", force: :cascade do |t|
     t.string "url"
     t.boolean "found"
     t.integer "year"
-    t.bigint "book_id", null: false
+    t.integer "book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_wikipedia_on_book_id"
   end
 
-  create_table "books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "books", force: :cascade do |t|
     t.string "content_name"
     t.string "isbn"
     t.string "original_title"
@@ -83,30 +83,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_091051) do
     t.boolean "content_cleaned"
     t.boolean "content_available"
     t.integer "n_authors"
-    t.bigint "author_id", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
-  create_table "genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
     t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "good_reads", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "good_reads", force: :cascade do |t|
     t.string "url"
     t.boolean "found"
     t.integer "year"
-    t.bigint "book_id", null: false
+    t.integer "book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_good_reads_on_book_id"
   end
 
-  create_table "gutenbergs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "book_id", null: false
+  create_table "gutenbergs", force: :cascade do |t|
+    t.integer "book_id", null: false
     t.string "url"
     t.integer "num"
     t.datetime "created_at", null: false
@@ -114,41 +114,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_091051) do
     t.index ["book_id"], name: "index_gutenbergs_on_book_id"
   end
 
-  create_table "image_urls", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "book_id", null: false
+  create_table "image_urls", force: :cascade do |t|
+    t.integer "book_id", null: false
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_image_urls_on_book_id"
   end
 
-  create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "book_id", null: false
+  create_table "images", force: :cascade do |t|
+    t.integer "book_id", null: false
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_images_on_book_id"
   end
 
-  create_table "similar_books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "book_id", null: false
-    t.bigint "another_book_id", null: false
+  create_table "similar_books", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "another_book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["another_book_id"], name: "index_similar_books_on_another_book_id"
     t.index ["book_id"], name: "index_similar_books_on_book_id"
   end
 
-  create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "wikipedia", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "wikipedia", force: :cascade do |t|
     t.string "url"
     t.boolean "found"
-    t.bigint "author_id", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_wikipedia_on_author_id"

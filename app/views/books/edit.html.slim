@@ -78,12 +78,14 @@ script src="https://code.jquery.com/jquery-3.6.1.min.js"
                     = f.submit
             br
             h5.card-title Book's images
+            = link_to "Add", new_book_image_path(@book)
             ul.list-group
                 - @book.images.each do |image|
                     li.list-group-item.d-flex.justify-content-between.align-item-center
                         img.cover-image src="#{image.url}"
                         div 
-                            a href="#{image.url}" #{image.url}
+                            a href="#{image.url}" #{image.url} 
+                            = link_to "Destroy", book_image_path(@book.id, image.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}
 
             br
             h5.card-title Update book's wiki data
@@ -132,10 +134,12 @@ script src="https://code.jquery.com/jquery-3.6.1.min.js"
             
             br
             h5.card-title Book's similar books
+            = link_to "Add", new_book_another_book_path(@book)
             ul.list-group
                 - @similar_books.each do |similar|
                     li.list-group-item.d-flex.justify-content-between.align-item-center
-                        p #{similar.another_book.name}
+                        p #{similar.another_book.name} 
+                        = link_to "Delete", book_similar_book_path(@book.id, similar.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 
             br
             h5.card-title Book's class

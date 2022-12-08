@@ -11,4 +11,7 @@ class Book < ApplicationRecord
     has_many :another_books, :through => :similar_books
     has_many :book_tags
     has_many :tags, :through => :book_tags
+
+    validates :title, presence: true, length: { minimum: 3 }
+    validates :author_name, presence: true, length: { minimum: 1 }
 end

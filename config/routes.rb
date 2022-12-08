@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :books do
+    resources :images
     resources :book_wikipedia
     resources :good_reads
     resources :gutenbergs
